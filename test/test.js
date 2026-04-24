@@ -1,11 +1,14 @@
 // object variables
-var fs = require('fs');
-var mocha = require('mocha');
-var sinon = require('sinon');
-require('sinon-as-promised');
-var sinonchai = require('sinon-chai');
-var expect = require('chai').use(require('sinon-chai')).expect;
-var Shipit = require('shipit-cli');
+import fs from 'fs';
+import mocha from 'mocha';
+import sinon from 'sinon';
+import 'sinon-as-promised';
+import sinonchai from 'sinon-chai';
+import chai from 'chai';
+import Shipit from 'shipit-cli';
+import sharedTask from '../index.js';
+
+var expect = chai.use(sinonchai).expect;
 var shipit; // local-to-test temporary variable
 var remoteStub;
 
@@ -21,7 +24,7 @@ describe('Shipit-Shared', function() {
       });
       shipit.stage = 'test';
 
-      require('../')(shipit);
+      sharedTask(shipit);
 
       shipit.initConfig({
         test: {
@@ -183,7 +186,7 @@ describe('Shipit-Shared', function() {
       });
       shipit.stage = 'test';
 
-      require('../')(shipit);
+      sharedTask(shipit);
       shipit.releaseDirname = '7357';
 
       remoteStub = sinon.stub(shipit, 'remote').resolves([]);

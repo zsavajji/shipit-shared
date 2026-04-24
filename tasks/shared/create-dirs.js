@@ -1,16 +1,16 @@
-var utils = require('shipit-utils');
-var chalk = require('chalk');
-var util = require('util');
-var init = require('../../lib/init');
-var mapPromise = require('../../lib/map-promise');
-var Promise = require('bluebird');
-var path = require('path2/posix');
+import utils from 'shipit-utils';
+import chalk from 'chalk';
+import util from 'util';
+import Promise from 'bluebird';
+import path from 'path2/posix';
+import init from '../../lib/init.js';
+import mapPromise from '../../lib/map-promise.js';
 
 /**
  * Create required directories for linked files and dirs.
  */
 
-module.exports = function(gruntOrShipit) {
+export default function (gruntOrShipit) {
 
   var task = function task() {
     var shipit = utils.getShipit(gruntOrShipit);
@@ -71,4 +71,4 @@ module.exports = function(gruntOrShipit) {
   };
 
   utils.registerTask(gruntOrShipit, 'shared:create-dirs', task);
-};
+}

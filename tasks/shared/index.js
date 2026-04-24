@@ -1,15 +1,17 @@
-var utils = require('shipit-utils');
-var init = require('../../lib/init');
+import utils from 'shipit-utils';
+import createDirs from './create-dirs.js';
+import setPermissions from './set-permissions.js';
+import link from './link.js';
 
 /**
  * Symlink shared files and directories.
  */
 
-module.exports = function(gruntOrShipit) {
+export default function (gruntOrShipit) {
   var shipit = utils.getShipit(gruntOrShipit);
-  require('./create-dirs')(gruntOrShipit);
-  require('./set-permissions')(gruntOrShipit);
-  require('./link')(gruntOrShipit);
+  createDirs(gruntOrShipit);
+  setPermissions(gruntOrShipit);
+  link(gruntOrShipit);
 
   utils.registerTask(gruntOrShipit, 'shared', [
     'shared:prepare',
@@ -39,4 +41,4 @@ module.exports = function(gruntOrShipit) {
       });
     }
   });
-};
+}

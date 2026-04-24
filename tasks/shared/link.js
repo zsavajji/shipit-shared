@@ -1,10 +1,12 @@
-var utils = require('shipit-utils');
-var sprintf = require('sprintf-js').sprintf;
-var path = require('path2/posix');
-var chalk = require('chalk');
-var Promise = require('bluebird');
-var init = require('../../lib/init');
-var _ = require('lodash');
+import utils from 'shipit-utils';
+import sprintfJs from 'sprintf-js';
+import path from 'path2/posix';
+import chalk from 'chalk';
+import Promise from 'bluebird';
+import _ from 'lodash';
+import init from '../../lib/init.js';
+
+const { sprintf } = sprintfJs;
 
 /**
  * Create shared symlinks.
@@ -14,7 +16,7 @@ var _ = require('lodash');
  * -h file is a symbolic link
  */
 
-module.exports = function(gruntOrShipit) {
+export default function (gruntOrShipit) {
   var link = function link(item) {
     var shipit = utils.getShipit(gruntOrShipit);
 
@@ -101,4 +103,4 @@ module.exports = function(gruntOrShipit) {
     'shared:link:dirs',
     'shared:link:files'
   ]);
-};
+}
