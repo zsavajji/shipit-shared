@@ -1,8 +1,7 @@
 import utils from 'shipit-utils';
 import chalk from 'chalk';
-import util from 'util';
-import Promise from 'bluebird';
-import path from 'path2/posix';
+import util from 'node:util';
+import path from 'node:path/posix';
 import init from '../../lib/init.js';
 import mapPromise from '../../lib/map-promise.js';
 

@@ -1,8 +1,7 @@
 import utils from 'shipit-utils';
 import sprintfJs from 'sprintf-js';
-import path from 'path2/posix';
+import path from 'node:path/posix';
 import chalk from 'chalk';
-import Promise from 'bluebird';
 import _ from 'lodash';
 import init from '../../lib/init.js';
 
@@ -69,7 +68,7 @@ export default function (gruntOrShipit) {
         return link(item);
       });
 
-      return new Promise.all(promises)
+      return Promise.all(promises)
       .then(function() {
         shipit.log(chalk.green('Shared directories symlinked on remote.'));
         shipit.emit('sharedDirsLinked');
@@ -89,7 +88,7 @@ export default function (gruntOrShipit) {
         return link(item);
       });
 
-      return new Promise.all(promises)
+      return Promise.all(promises)
       .then(function() {
         shipit.log(chalk.green('Shared files symlinked on remote.'));
         shipit.emit('sharedFilesLinked');
